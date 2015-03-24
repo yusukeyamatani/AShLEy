@@ -1,8 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GoRoundAI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ScoreManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/GoRoundAI.cs" Line="16" Column="35" />
+      <File FileName="Assets/Scripts/PlayerShooting.cs" Line="33" Column="13" />
+      <File FileName="Assets/Scripts/GoRoundAI.cs" Line="50" Column="13" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="12" Column="1" />
+      <File FileName="Assets/Scripts/EnemyAI.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/EnemyHealth.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ScoreManager.cs" Line="22" Column="39" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -4,42 +4,47 @@ using System.Collections;
 [RequireComponent(typeof (GoRoundAI))]
 public class EnemyAI : MonoBehaviour {
 	
-	Transform player;
+	GameObject player;
 	Transform _transform;
 	NavMeshAgent nav;
-	float squareFarRange = 200f;
 	GoRoundAI  goRoundAI;
+	public float angle = 90f;
+	bool IshHt = false;
+	RaycastHit hit;
 
 	
 	void Start(){
 		_transform = GetComponent<Transform>();
-		player = GameObject.FindGameObjectWithTag ("Player").transform;
+		player = GameObject.FindGameObjectWithTag ("Player");
 		nav = GetComponent <NavMeshAgent> ();
 		goRoundAI = GetComponent <GoRoundAI> ();
 	}
-	
-	void Update (){
-		if (AIFunction ()) {
-			goRoundAI.enabled = false;
-			nav.SetDestination (player.position);
-//			Debug .Log("###########GO");
-		} 
-		else 
+
+
+	void OnTriggerStay (Collider other)
+	{
+		if  (other.gameObject == player && !IshHt){
+			if (Vector3.Angle(player.transform.position - _transform.position, transform.forward) < angle){
+				goRoundAI.enabled = false;
+				nav.SetDestination (player.transform.position - new Vector3(5.0f, 0.0f, 0.0f));
+				IshHt = true ;
+			}
+		}
+		else if (other.gameObject == player && IshHt)
 		{
+			nav.SetDestination (player.transform.position - new Vector3(5.0f, 0.0f, 0.0f));
+		}
+
+	}
+
+
+	void OnTriggerExit (Collider other)
+	{		
+		if (other.gameObject == player) {
 			goRoundAI.enabled = true;
-//			Debug .Log("###########STOP");
+			IshHt = false;
 		}
-	}
-	
-	bool AIFunction(){
-		Debug.Log ("$$$$$$$$:" +  (_transform.position - player.position));
-		Debug.Log ("########:" + (_transform.position - player.position).sqrMagnitude);
-		if ((_transform.position - player.position).sqrMagnitude < squareFarRange) {
-			return true;
-		} 
-		else 
-		{
-			return false;
-		}
-	}
+			
+	} 
+		
 }
